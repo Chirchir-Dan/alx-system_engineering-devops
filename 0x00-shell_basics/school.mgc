@@ -1,1 +1,3 @@
 #!/bin/bash
+#!/bin/bash
+echo "SCHOOL" | file -m - school.mgc
