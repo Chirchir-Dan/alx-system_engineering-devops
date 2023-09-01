@@ -1,1 +1,3 @@
 #!/bin/bash
+ls -A1p | LC_ALL=C sort -d | tr '\n' ','
+
