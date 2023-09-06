@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "Replace characters in this text" | tr 'Ac' 'Ze'
+tr 'Ac' 'Ze'
+
