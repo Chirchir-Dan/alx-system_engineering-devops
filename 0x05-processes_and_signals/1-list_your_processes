@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Display a list of currently running processes with hierarchy
+# Uses command options, 'a' to list all processes
+# 'x' to include those without a controlling terminal
+# 'j' to show process hierachy and
+# 'f' to display user-oriented output
+
+ps axjf
