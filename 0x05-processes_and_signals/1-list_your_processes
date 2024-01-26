@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Display a list of currently running processes with hierarchy
 # Uses command options, 'a' to list all processes
-# 'a' to display all processes
-# 'u' to show process for all users
-# 'x' to include those without TTY
-# 'f' to display user-oriented output
+# 'a' to display processes for all users
+# 'u' for user oriented format
+# 'x' to include processes not attatched to a terminal
+# 'f' to display process hierachy
 ps auxf
