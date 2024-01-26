@@ -4,5 +4,4 @@
 # 'x' to include those without a controlling terminal
 # 'j' to show process hierachy and
 # 'f' to display user-oriented output
-
-ps axjf
+ps eux
