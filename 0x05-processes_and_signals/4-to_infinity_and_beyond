@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# Displays To infinity and beyond indefinitely.
-# Has a sleep 2 betweem iterations.
-#Infinite loop
-
-while true; do
-	echo "To infinity and beyond"
-	sleep 2
-done
