@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# The script displays the content of the file /etc/passwd
+
+
+# Open /etc/passwd for reading
+exec 3< /etc/passwd
+
+# Read line by line until the end of the file is reached
+while IFS=':' read -r username _ uid gid info home shell; do
+    # Extracting the group name associated with the group id
+    group=$(getent group "$gid" | cut -d: -f1)
+
+    # Extracting the password field for the user
+    password=$(getent passwd "$username" | cut -d: -f2)
+
+    # Displaying the formatted information
+    echo "The user $username is part of the $group gang, lives in $home and rides $shell. User ID's place is protected by the passcode $password, more info about the user here: $info"
+done <&3
+
+# Close the file descriptor
+exec 3<&-
