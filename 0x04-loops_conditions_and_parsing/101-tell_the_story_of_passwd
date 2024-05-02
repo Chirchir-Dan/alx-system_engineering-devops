@@ -6,7 +6,7 @@
 exec 3< /etc/passwd
 
 # Read line by line until the end of the file is reached
-while IFS=':' read -r username _ uid gid info home shell; do
+while IFS=':' read -r username _ _ gid gid info home shell; do
     # Extracting the group name associated with the group id
     group=$(getent group "$gid" | cut -d: -f1)
 
