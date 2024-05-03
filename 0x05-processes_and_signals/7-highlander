@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This Bash script demonstrates an infinite loop that prints "To infinity and beyond"
+# with a 2-second delay between each iteration. It also sets up a signal handler
+# to print "I am invincible!!!" when receiving a SIGTERM signal.
+
+# Set up the SIGTERM signal handler to print "I am invincible!!!"
+trap 'echo "I am invincible!!!"' SIGTERM
+
+# Infinite loop to print "To infinity and beyond" with a delay
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
