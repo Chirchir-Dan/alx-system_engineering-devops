@@ -57,7 +57,7 @@ main() {
             restart_process
             ;;
         *)
-            echo "Usage: $0 {start|stop|restart}"
+            echo "Usage: manage_my_process {start|stop|restart}"
             exit 1
             ;;
     esac
