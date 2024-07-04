@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# This script configures the Nginx server so that /redirect_me
+# is redirecting to another page
 
 # Install Nginx if not already installed
 if ! command -v nginx &> /dev/null
