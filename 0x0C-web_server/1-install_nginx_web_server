@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
-# This script installs Nginx in the server
+# This script installs and configures Nginx to serve a Hello World! page on an Ubuntu machine
 
-# Update package list and install Nginx
-sudo apt-get -y update
-sudo apt-get -y install nginx
+# Ensure Nginx is installed
+sudo apt-get update -y
+sudo apt-get install -y nginx
 
-# Create a custom HTML file that contains "Hello World!"
-echo "Hello World!" > sudo tee /var/www/html/index.html
+# Create a simple HTML page
+echo 'Hello World!' | sudo tee /var/www/html/index.html
 
-# Ensure Nginx is listening on port 80
-sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
-sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:80;/' /etc/nginx/sites-available/default
+# Set correct permissions
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
 
-# Reload Nginx to apply the changes without usi
-sudo /etc/init.d/nginx reload
+# Configure Nginx to listen on port 80 and serve the HTML page
+sudo sed -i "s|root /var/www/html;|root /var/www/html; index index.html;|" /etc/nginx/sites-available/default
+sudo sed -i "s|# location / {|location / {|" /etc/nginx/sites-available/default
+sudo sed -i "s|# try_files \$uri \$uri/ =404;|try_files \$uri \$uri/ =404;|" /etc/nginx/sites-available/default
 
-# Start nginx if not already running
-sudo /etc/init.d/nginx start
-
-# Check the status of Nginx to ensure it is running
-sudo /etc/init.d/nginx status
+# Restart Nginx without using systemctl
+sudo service nginx restart
