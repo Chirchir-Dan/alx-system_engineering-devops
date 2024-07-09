@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# This script creates a custom 404 page
-
 # Install Nginx if not already installed
 if ! command -v nginx &> /dev/null
 then
-    sudo apt-get update
+    sudo apt-get -y update
     sudo apt-get install -y nginx
 fi
 
