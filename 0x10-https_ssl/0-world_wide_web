@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Script to display information about subdomains
+
+# Function to get DNS record information using dig and awk
+get_dns_info() {
+    local domain=$1
+    local subdomain=$2
+    dig_output=$(dig +short "$subdomain.$domain" | awk '{ print $1 }')
+    if [[ -n "$dig_output" ]]; then
+        echo "The subdomain $subdomain is a A record and points to $dig_output"
+    else
+        echo "The subdomain $subdomain does not have a DNS record."
+    fi
+}
+
+# Main script
+main() {
+    local domain=$1
+    local subdomain=$2
+
+    if [[ -z "$domain" ]]; then
+        echo "Usage: $0 domain [subdomain]"
+        exit 1
+    fi
+
+    local subdomains=(www lb-01 web-01 web-02)
+
+    if [[ -n "$subdomain" ]]; then
+        get_dns_info "$domain" "$subdomain"
+    else
+        for sub in "${subdomains[@]}"; do
+            get_dns_info "$domain" "$sub"
+        done
+    fi
+}
+
+# Call the main function with all script arguments
+main "$@"
