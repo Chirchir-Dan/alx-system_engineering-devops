@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
-# Display information about subdomains
+# display contents about subdomains
 
-# Function to display DNS information
-display_info () {
+display_info ()
+{
     domain="$1"
     subdomain="$2"
-    # Use dig to get DNS records and awk to process and print the desired output
     dig "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$subdomain"
 }
 
-# Loop through the specified subdomains
 for subdomain in "www" "lb-01" "web-01" "web-02"
 do
-    # Check if the second argument is empty or matches the current subdomain
-    if [ -z "$2" ] || [ "$2" == "$subdomain" ]; then
-        display_info "$1" "$subdomain"
+    if [ -z "$2" ] || [ "$2" == "$subdomain" ] ;
+    then
+	display_info "$1" "$subdomain"
     fi
 done
