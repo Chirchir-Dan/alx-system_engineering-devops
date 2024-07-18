@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Ensure Nginx is running & listens on port 80 of all servers active IPv4 IPs then stops it.
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+service nginx restart
+kill "$(pgrep 'nginx' | head -1)"
