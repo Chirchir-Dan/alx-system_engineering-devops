@@ -8,10 +8,15 @@
 #   ufw-before-forward
 #
 
-#port forwading from 8080 to 80
+# Start by flushing all the existing rules.
 *nat
 :PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# Port forwading rule
 -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+
 COMMIT
 
 # Don't delete these required lines, otherwise there will be errors
