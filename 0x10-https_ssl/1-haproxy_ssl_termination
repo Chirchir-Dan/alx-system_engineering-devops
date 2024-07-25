@@ -36,6 +36,8 @@ frontend https-in
         bind *:80
         bind *:443 ssl crt /etc/haproxy/certs/www.kipkosgei.tech.pem
         redirect scheme https code 301 if !{ ssl_fc }
+	mode http
+	option httplog
         default_backend web_servers
 
 backend web_servers
