@@ -41,5 +41,5 @@ frontend https-in
 backend web_servers
         balance roundrobin
         option forwardfor
-        server 528841-web-01 100.25.188.160 check
-        server 528841-web-02 54.236.235.81 check
+        server 528841-web-01 100.25.188.160:80 check
+        server 528841-web-02 54.236.235.81:80 check
